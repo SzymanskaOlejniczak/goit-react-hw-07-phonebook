@@ -15,26 +15,29 @@ export const ContactList = () => {
       contact.name.toLowerCase().includes(filter.toLowerCase()) ||
       contact.number.replace(/-|\s/g, '').includes(filter.replace(/-|\s/g, ''))
   );
+  const deleteContact = data => {
+    dispatch(deleteContacts(data));
+};
 
-
-    return filteredContacts.length > 0 ? ( (
+    return filteredContacts.length > 0 ? ( 
     <ul className={style.list}>
       {filteredContacts.map(({ id, name, number }) => {
         return (
         <li className={style.contact} 
           key={id}>
-          {name}: {number}
+          <p>{name}:</p>
+          <p>{number}</p>
           <button
             className={style.btn}
             type="button"
-            onClick={() => dispatch(deleteContacts(id))}
+            onClick={() => deleteContact(id)}
           >
             <span>Delete</span> <FcEmptyTrash />
           </button>
         </li>
       )})}
     </ul>
-    )): ((error && <p>Error: {error}</p> )|| <p>No contacts</p>
+    ): ((error && <p>Error: {error}</p> )|| <p>No contacts</p>
     );
 };
 
