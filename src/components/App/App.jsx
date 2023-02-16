@@ -11,6 +11,7 @@ export const App=()=> {
   const isLoading = useSelector(getIsLoadingStatus);
   const error = useSelector(getErrorStatus);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -22,9 +23,7 @@ export const App=()=> {
         <h2>Contacts</h2>
         <Filter  />
         {isLoading && !error ? <p>Loading...</p> : <ContactList />}
-        <ContactList
       
-        />
       </div>
     );
   }
