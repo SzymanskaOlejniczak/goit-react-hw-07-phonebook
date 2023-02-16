@@ -5,7 +5,7 @@ import style from './Filter.module.css';
 export const Filter = () => {
   const dispatch = useDispatch(); 
 
-  const changeFilter = e => {
+  const changeFilter = (e) => {
     const value =  e.target.value.toLowerCase() 
     dispatch(filterContacts(value));
   };
